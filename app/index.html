@@ -27,25 +27,75 @@
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <img class="center-block" src="/mock.png" alt="mock">
-
-    <p> s</p>
-    <p> s</p>
-
     <div class="text-center">
 
     <svg version="1.1"
      baseProfile="full"
-     width="500" height="500" viewBox="-250 -250 500 500"
+     width="500" height="500"
      xmlns="http://www.w3.org/2000/svg">
-
+  <defs>
+    <clipPath id="cut-piece-blue">
+      <rect x="10" y="10" width="500" height="500" />
+    </clipPath>
+  </defs>
   <rect width="100%" height="100%" fill="white" />
-  <circle cx="0" cy="0" r="237.5" fill="#515151"/>
-  <circle cx="0" cy="0" r="211" fill="#9f0f17"/>
-  <circle cx="0" cy="0" r="122" fill="#515151"/>
+<g transform="translate(250,250)">
+  <circle cx="0" cy="0" r="237" fill="#515151"/>
+  <circle id="blue-piece" cx="0" cy="0" r="215" fill="#094a8f" clip-path="url(#cut-piece-blue)" />
+  <circle id="yellow-piece" cx="0" cy="0" r="215" fill="#cca707" clip-path="url(#cut-piece-blue)"  transform="rotate(90)" />
+  <circle id="green-piece" cx="0" cy="0" r="215" fill="#00a74a" clip-path="url(#cut-piece-blue)"  transform="rotate(180)" />
+  <circle id="red-piece" cx="0" cy="0" r="215" fill="#9f0f17" clip-path="url(#cut-piece-blue)" transform="rotate(270)" />
+ 
+<circle cx="0" cy="0" r="123" fill="#515151"/>
   <circle cx="0" cy="0" r="110" fill="#ece7ee"/>
+  <text x="0" y="-18" id="logo" text-anchor="middle" style="font-family: Verdana;
+  font-weight:bold;
+  font-size: 48">Simon</text>
+  <text x="86" y="-45" id="logo" text-anchor="middle" style="font-family: Verdana;
+  font-weight:bold;
+  font-size: 10">Ⓡ</text>
+
+<g id="start-button">
+  <circle  cx="10" cy="10" r="14" fill="#444444" />
+  <circle  cx="10" cy="10" r="10" fill="#fc0102" />
+</g>
+  <text x="10" y="45" text-anchor="middle" style="font-family: Verdana;
+  letter-spacing:-1;
+  font-size: 12">START</text>
+
+
+<g id="strict-button">
+  <circle cx="60" cy="10" r="14" fill="#444444" />
+  <circle cx="60" cy="10" r="10" fill="#ffff00" />
+</g>
+  <text x="60" y="45" text-anchor="middle" style="font-family: Verdana;
+  letter-spacing:-1;
+  font-size: 12">STRICT</text>
+
+  <rect x="-80" y="-10" rx="10" ry="10" width="60" height="40" fill="#32050c" />
+  <text x="-48" y="45" text-anchor="middle" style="font-family: Verdana;
+  letter-spacing:-1;
+  font-size: 12">COUNT</text>
+  
+  <text x="-50" y="16" text-anchor="middle" style="font-family: Verdana;
+  letter-spacing:-1;
+  fill: #430710;
+  letter-spacing:1;
+  font-size: 20">--</text>
+  <!-- active color: c6070f -->
+
+<rect x="-21" y="62" rx="4" ry="4" width="42" height="22" fill="black" />
+  <text x="-38" y="78" text-anchor="middle" style="font-family: Verdana;
+  letter-spacing:-1;
+  font-size: 12">OFF</text>
+  <text x="36" y="78" text-anchor="middle" style="font-family: Verdana;
+  letter-spacing:-1;
+  font-size: 12">ON</text>
+
+<rect x="-19" y="63"  rx="4" ry="4" width="19" height="19" fill="#3193de" />
   
 
+</g>
     </svg>
 <div>
 
