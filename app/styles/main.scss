@@ -93,18 +93,18 @@ body {
   }
 }
 
-#green-piece:hover {
+#green-piece:hover ,#green-piece.hover {
   fill: #13ff7c;
 }
 
-#yellow-piece:hover {
+#yellow-piece:hover, #yellow-piece.hover {
   fill: #fed93f;
 }
 
-#red-piece:hover {
+#red-piece:hover, #red-piece.hover {
   fill: #ff4c4c;
 }
 
-#blue-piece:hover {
+#blue-piece:hover , #blue-piece.hover {
   fill: #1c8cff;
 }
