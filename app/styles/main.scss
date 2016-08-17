@@ -93,18 +93,20 @@ body {
   }
 }
 
-#green-piece:hover ,#green-piece.hover {
+#green-piece.pushed {
   fill: #13ff7c;
 }
 
-#yellow-piece:hover, #yellow-piece.hover {
+#yellow-piece.pushed {
   fill: #fed93f;
 }
 
-#red-piece:hover, #red-piece.hover {
+#red-piece.pushed {
   fill: #ff4c4c;
 }
 
-#blue-piece:hover , #blue-piece.hover {
+#blue-piece.pushed {
   fill: #1c8cff;
 }
+
+#blue-piece,#red-piece,#yellow-piece,#green-piece,#strict-button,#start-button,#on-off-button { cursor: pointer; cursor: hand; }

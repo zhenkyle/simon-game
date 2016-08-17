@@ -87,6 +87,7 @@ $(document).ready(function() {
 
   function startReplay() {
     myGame.replaying = true;
+    clearTimeout(myGame.timeoutId);
     myGame.timeoutId = window.setTimeout(replay, myGame.replayInterval, myGame.fullSequence.slice(0, myGame.steps));
   }
 
@@ -94,36 +95,39 @@ $(document).ready(function() {
     var a = arr[0];
     switch (a) {
       case 0:
-        $("#blue-piece").addClass("hover");
+        $("#blue-piece").addClass("pushed");
         myGame.timeoutId1 = window.setTimeout(function() {
-          $("#blue-piece").removeClass("hover")
+          $("#blue-piece").removeClass("pushed")
         }, Math.floor(myGame.replayInterval * 0.9));
         break;
       case 1:
-        $("#yellow-piece").addClass("hover");
+        $("#yellow-piece").addClass("pushed");
         myGame.timeoutId1 = window.setTimeout(function() {
-          $("#yellow-piece").removeClass("hover")
+          $("#yellow-piece").removeClass("pushed")
         }, Math.floor(myGame.replayInterval * 0.9));
         break;
       case 2:
-        $("#green-piece").addClass("hover");
+        $("#green-piece").addClass("pushed");
         myGame.timeoutId1 = window.setTimeout(function() {
-          $("#green-piece").removeClass("hover")
+          $("#green-piece").removeClass("pushed")
         }, Math.floor(myGame.replayInterval * 0.9));
         break;
       case 3:
-        $("#red-piece").addClass("hover");
+        $("#red-piece").addClass("pushed");
         myGame.timeoutId1 = window.setTimeout(function() {
-          $("#red-piece").removeClass("hover")
+          $("#red-piece").removeClass("pushed")
         }, Math.floor(myGame.replayInterval * 0.9));
         break;
     }
     new Audio(myGame.audios[a]).play();
     var newArr = arr.slice(1);
-    if (newArr.length !== 0)
+    if (newArr.length !== 0) {
+      clearTimeout(myGame.timeoutId);
       myGame.timeoutId = window.setTimeout(replay, myGame.replayInterval, newArr);
+    }
     else {
       myGame.replaying = false;
+      clearTimeout(myGame.timeoutId);
       myGame.timeoutId = window.setTimeout(inputTimeout, 3000, myGame.playerSequence.slice());
     }
   }
@@ -174,6 +178,28 @@ $(document).ready(function() {
       $("#strict-light").attr("fill", "#c6070f")
   });
 
+  $("#blue-piece").mousedown(mousedownPiece);
+  $("#green-piece").mousedown(mousedownPiece);
+  $("#yellow-piece").mousedown(mousedownPiece);
+  $("#red-piece").mousedown(mousedownPiece);
+
+function mousedownPiece() {
+  if (myGame.replaying === false && myGame.playerSequence.length < myGame.steps) {
+  $(this).addClass("pushed");
+}
+}
+
+$("#blue-piece").mouseup(mouseupPiece);
+$("#green-piece").mouseup(mouseupPiece);
+$("#yellow-piece").mouseup(mouseupPiece);
+$("#red-piece").mouseup(mouseupPiece);
+
+function mouseupPiece() {
+if (myGame.replaying === false && myGame.playerSequence.length < myGame.steps) {
+$(this).removeClass("pushed");
+}
+}
+
   $("#blue-piece").click(clickPiece);
   $("#green-piece").click(clickPiece);
   $("#yellow-piece").click(clickPiece);
@@ -214,12 +240,13 @@ $(document).ready(function() {
       } else {
         new Audio(myGame.audios[i]).play();
         if (myGame.steps === 4)
-          myGame.replayInterval = 800;
+          myGame.replayInterval = 700;
         else if (myGame.steps === 8)
-          myGame.replayInterval = 600;
+          myGame.replayInterval = 500;
           else if (myGame.steps === 12)
-            myGame.replayInterval = 400;
+            myGame.replayInterval = 300;
         if (myGame.playerSequence.length !== myGame.steps) {
+          clearTimeout(myGame.timeoutId);
           myGame.timeoutId = window.setTimeout(inputTimeout, 3000, myGame.playerSequence.slice());
         } else if (myGame.steps === 20) {
           // playerSequence are same as fullSequence
